@@ -5,7 +5,6 @@ site_author: Qubernetic
 copyright: "© 2026 Csaba Biró (Qubernetic). All rights reserved."
 repo_url: https://github.com/qubernetic/TwinCat-MCP-Docs
 repo_name: qubernetic/TwinCat-MCP-Docs
-edit_uri: edit/main/docs/
 strict: true
 
 theme:
@@ -40,7 +39,6 @@ theme:
     - search.highlight
     - search.share
     - content.code.copy
-    - content.action.edit
 
 nav:
   - Home: index.md

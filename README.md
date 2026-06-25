@@ -1,10 +1,10 @@
 # TwinCat-MCP Documentation
 
-[![Docs](https://img.shields.io/badge/docs-docs.qubernetic.com-blue)](https://docs.qubernetic.com)
+[![Docs](https://img.shields.io/badge/docs-docs.twincatmcp.qubernetic.com-blue)](https://docs.twincatmcp.qubernetic.com)
 
 User documentation for **TwinCat-MCP** — an MCP server for TwinCAT 3 PLC development that lets AI coding agents build, configure, and debug TwinCAT projects.
 
-📖 **Read the docs: [docs.qubernetic.com](https://docs.qubernetic.com)**
+📖 **Read the docs: [docs.twincatmcp.qubernetic.com](https://docs.twincatmcp.qubernetic.com)**
 
 ## Local development
 

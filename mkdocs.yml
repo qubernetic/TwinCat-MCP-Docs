@@ -1,0 +1,39 @@
+site_name: TwinCat-MCP
+site_url: https://docs.qubernetic.com
+site_description: MCP server for TwinCAT 3 PLC development — let AI coding agents build, configure, and debug TwinCAT projects.
+copyright: "© 2026 Csaba Biró (Qubernetic). All rights reserved."
+repo_url: https://github.com/qubernetic/TwinCat-MCP-Docs
+strict: true
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle: { icon: material/brightness-7, name: Switch to dark mode }
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle: { icon: material/brightness-4, name: Switch to light mode }
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - content.code.copy
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Agent Connection: getting-started/agent-connection.md
+      - Configuration: getting-started/configuration.md
+  - Licensing:
+      - Requesting & Installing: licensing/requesting-and-installing.md
+      - What Licensing Gates: licensing/what-licensing-gates.md
+  - Tools:
+      - Overview: tools/overview.md
+  - Changelog: changelog.md
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - toc: { permalink: true }

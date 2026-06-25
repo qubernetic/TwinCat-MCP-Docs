@@ -1,0 +1,30 @@
+/* Qubernetic brand accent (#22A8E0) on a neutral header */
+
+:root {
+  --md-accent-fg-color: #22a8e0;
+  --md-accent-fg-color--transparent: rgba(34, 168, 224, 0.1);
+  --md-typeset-a-color: #1486b8;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: #4fbde8;
+}
+
+/* Primary CTA buttons in brand blue (header stays neutral) */
+.md-typeset .md-button--primary {
+  background-color: #22a8e0;
+  border-color: #22a8e0;
+  color: #ffffff;
+}
+.md-typeset .md-button--primary:hover,
+.md-typeset .md-button--primary:focus {
+  background-color: #1b86b4;
+  border-color: #1b86b4;
+  color: #ffffff;
+}
+
+/* Dark theme: swap the logo to the white-on-dark variant */
+[data-md-color-scheme="slate"] .md-header__button.md-logo img,
+[data-md-color-scheme="slate"] .md-nav__button.md-logo img {
+  content: url("../assets/logo-dark.png");
+}

@@ -1,25 +1,47 @@
 site_name: TwinCat-MCP
 site_url: https://docs.twincatmcp.qubernetic.com
 site_description: MCP server for TwinCAT 3 PLC development — let AI coding agents build, configure, and debug TwinCAT projects.
+site_author: Qubernetic
 copyright: "© 2026 Csaba Biró (Qubernetic). All rights reserved."
 repo_url: https://github.com/qubernetic/TwinCat-MCP-Docs
+repo_name: qubernetic/TwinCat-MCP-Docs
+edit_uri: edit/main/docs/
 strict: true
+
 theme:
   name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  icon:
+    repo: fontawesome/brands/github
   palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
+    - media: "(prefers-color-scheme)"
+      toggle: { icon: material/brightness-auto, name: Switch to light mode }
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: custom
       toggle: { icon: material/brightness-7, name: Switch to dark mode }
-    - scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle: { icon: material/brightness-4, name: Switch to light mode }
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: custom
+      toggle: { icon: material/brightness-4, name: Switch to system preference }
   features:
+    - navigation.tabs
     - navigation.sections
     - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.footer
+    - toc.follow
     - search.suggest
+    - search.highlight
+    - search.share
     - content.code.copy
+    - content.action.edit
+
 nav:
   - Home: index.md
   - Getting Started:
@@ -32,8 +54,39 @@ nav:
   - Tools:
       - Overview: tools/overview.md
   - Changelog: changelog.md
+
+plugins:
+  - search
+  - social
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
+  - tables
   - pymdownx.highlight
   - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed: { alternate_style: true }
   - toc: { permalink: true }
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/qubernetic
+      name: Qubernetic on GitHub
+    - icon: fontawesome/solid/globe
+      link: https://qubernetic.com
+      name: Qubernetic website
+    - icon: fontawesome/solid/envelope
+      link: mailto:info@qubernetic.com
+      name: Email Qubernetic

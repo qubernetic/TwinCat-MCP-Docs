@@ -11,7 +11,7 @@ TwinCat-MCP runs as a Windows Service exposing a Streamable HTTP MCP endpoint. A
 
 ## Highlights
 
-- **55 MCP tools** across project, build, system, and runtime operations.
+- **56 MCP tools** across project, build, system, and runtime operations.
 - **Works with your agent** — Claude Code, GitHub Copilot CLI, Cursor.
 - **Live PLC interaction** — read/write symbols and browse the running PLC via ADS.
 - **Safe by default** — UserMode Runtime and guarded operations for risky actions.

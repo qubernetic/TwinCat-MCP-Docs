@@ -10,13 +10,21 @@ running PLC and a reachable ADS route. Common parameters:
 
 ### browse_symbols
 
-Lists the PLC's variables.
+Lists the PLC's variables. The walk is always bounded, so even a large object graph
+(for example a TcOpen context) answers quickly.
 
 | Parameter | Description |
 |-----------|-------------|
 | `parentPath` | Browse the children of this symbol (omit for the root). |
-| `maxDepth` | Max nesting depth (`0` = unlimited; `1` = top level only). |
-| `leafOnly` | Flat list of leaf variables only. |
+| `maxDepth` | Max nesting depth, default `2` (`1` = only the symbols at `parentPath`; `0` = the hard limit of 30). |
+| `maxNodes` | Max symbols in the answer, default `1000` (`0` = the hard limit). The hard limit is the [`BrowseSymbolsMaxNodes`](../getting-started/configuration.md#memory-limits) setting, default 5000. |
+| `followPointers` | Follow `POINTER TO` / `REFERENCE TO` symbols (default `false`). |
+| `leafOnly` | Flat list of leaf variables only (respects `maxDepth`). |
+
+Symbols marked `hasMore: true` have children that were not expanded. Browse them with
+`parentPath` rather than raising the limits. When a limit is reached, the answer ends
+with a [limit notice](overview.md#limits-are-not-errors). A value above a hard limit
+returns `INVALID_ARGUMENT` with the allowed range.
 
 ### read_symbol
 

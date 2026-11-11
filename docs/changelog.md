@@ -23,6 +23,9 @@ transport, an expanded tool set, and offline licensing.
 - `project_digest` — one-call project overview: POUs, DUTs, GVLs, libraries, tasks.
 - `read_pou_batch` — read multiple POUs in a single call.
 - `check_objects` — validate configuration objects.
+- `service_memory` — show the Service's memory use and limits, and release unused memory on request.
+- Options → **Memory & Limits** page with a live memory bar, and the `BrowseSymbolsMaxNodes` and `MaxPrivateMemoryMB` settings.
+- Memory guard and automatic memory release in the Service.
 - MCP resources — `twincat://{instanceId}/tree`, `/pous`, `/libraries`.
 - `dryRun` preview mode for mutating tools (`write_pou`, `write_item_xml`, `delete_item`, `rename_item`, `link_variables`/`unlink_variables`).
 - Offline, machine-bound licensing — signed `TCMCP1.…` tokens; `get_license_status`, `generate_license_request`, `install_license`.
@@ -37,6 +40,9 @@ transport, an expanded tool set, and offline licensing.
 
 ### Fixed
 - `launch_instance` handling of invalid solution paths.
+- `browse_symbols` and symbol `search` no longer walk the whole symbol tree; this caused very high Service memory use. `maxDepth` now defaults to 2, with new `maxNodes` and `followPointers` parameters.
+- Reached limits are reported as notices ("Limit reached, not an error"), not as errors.
+- The Options window scrolls with the mouse wheel.
 
 ### Security
 - License enforcement — the UserMode Runtime and all tools require a valid license; only the three licensing tools are available without one.

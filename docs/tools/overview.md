@@ -1,12 +1,12 @@
 # Tools Overview
 
-TwinCat-MCP gives your agent **55 tools** and **3 resources**. The agent picks and
+TwinCat-MCP gives your agent **56 tools** and **3 resources**. The agent picks and
 parameterises the tools itself — these pages show what is possible, so you know what
 to ask for, and document the rules the tools follow.
 
 | Category | Tools | |
 |----------|------:|---|
-| [Instances & Solutions](instances-and-solutions.md) | 7 | Start/quit TcXaeShell, create and close solutions and projects |
+| [Instances & Solutions](instances-and-solutions.md) | 8 | Start/quit TcXaeShell, create and close solutions and projects, Service memory |
 | [Project Navigation](project-navigation.md) | 9 | Overview, search, tree browsing, XML configuration, folders, rename, delete |
 | [POUs & Code](pou.md) | 4 | Create, read and write programs, FBs, methods, properties, interfaces, DUTs, GVLs |
 | [Build](build.md) | 4 | Syntax check, build, error list, save |
@@ -62,12 +62,24 @@ projects:
 |------|-----------|
 | [`read_pou`](pou.md#read_pou) | `fields`: `declaration`, `implementation`, `structure` or `full` |
 | [`list_tree_items`](project-navigation.md#list_tree_items) | `limit`, `compact`, `maxDepth` |
-| [`browse_symbols`](ads.md#browse_symbols) | `maxDepth`, `leafOnly` |
+| [`browse_symbols`](ads.md#browse_symbols) | `maxDepth`, `maxNodes`, `followPointers`, `leafOnly` |
 | [`get_errors`](build.md#get_errors) | `projectFilter`, `limit`, `severity` |
 | [`read_item_xml`](project-navigation.md#read_item_xml) | `xpath`, `maxLength` |
 | [`search`](project-navigation.md#search) | `limit` |
 
-When a result is capped, a visible truncation marker is appended.
+### Limits are not errors
+
+When a limit is reached, the call still succeeds and the answer ends with a notice:
+
+```json
+{"_truncated": true, "_limit": "maxNodes",
+ "_message": "Limit reached, not an error: the walk stopped after 1000 symbols ..."}
+```
+
+`_limit` names the limit, `_truncated` is set when items were left out, and the
+message says how to get the rest (narrow the path or raise the named limit). The data
+before the notice is valid. `read_item_xml` marks a cut at the end of the text with
+`[limit reached, not an error: ...]`.
 
 ### Dry runs
 

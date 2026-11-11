@@ -49,8 +49,23 @@ nav:
   - Licensing:
       - Requesting & Installing: licensing/requesting-and-installing.md
       - What Licensing Gates: licensing/what-licensing-gates.md
+  - Guides:
+      - How to Use: guides/how-to-use.md
+      - Best Practices: guides/best-practices.md
+      - Safety: guides/safety.md
+      - Troubleshooting: guides/troubleshooting.md
   - Tools:
       - Overview: tools/overview.md
+      - Instances & Solutions: tools/instances-and-solutions.md
+      - Project Navigation: tools/project-navigation.md
+      - POUs & Code: tools/pou.md
+      - Build: tools/build.md
+      - Libraries: tools/libraries.md
+      - Tasks: tools/tasks.md
+      - I/O: tools/io.md
+      - System & Runtime: tools/system-runtime.md
+      - ADS (live variables): tools/ads.md
+      - Licensing: tools/licensing.md
   - Changelog: changelog.md
 
 plugins:

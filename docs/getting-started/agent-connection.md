@@ -20,8 +20,13 @@ npm install -g @anthropic-ai/claude-code
 Add the MCP server:
 
 ```bash
-claude mcp add --transport http twincat-mcp-service http://localhost:3001/mcp
+claude mcp add --scope user --transport http twincat-mcp-service http://localhost:3001/mcp
 ```
+
+!!! tip "Use `--scope user`"
+    Without it, Claude Code registers the server only for the folder you ran the
+    command in, and sessions started elsewhere won't see the tools. Check the
+    connection with `/mcp` inside Claude Code.
 
 Then start Claude Code in your TwinCAT project directory:
 
@@ -83,5 +88,7 @@ Alternatively, add it to `.cursor/mcp.json` in your project root:
 ## Next
 
 Once connected, your agent lists every available tool with its description. See
-the [Tools Overview](../tools/overview.md) for what's on offer, and
-[Licensing](../licensing/requesting-and-installing.md) to activate them.
+the [Tools Overview](../tools/overview.md) for what's on offer,
+[Licensing](../licensing/requesting-and-installing.md) to activate them, and
+[How to Use](../guides/how-to-use.md) and [Best Practices](../guides/best-practices.md)
+before your first real task.

@@ -5,6 +5,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/), and the site
 [Semantic Versioning](https://semver.org/) independently of the product version.
 The product's own changelog is published at [docs/changelog.md](docs/changelog.md).
 
+## [1.2.0] - 2026-11-12
+
+### Added
+- Download button on the home and installation pages. It always gets the latest MSI through https://get.twincatmcp.qubernetic.com/download/ and shows the version, the SHA-256 and the release notes link from the update feed (#13)
+
 ## [1.1.0] - 2026-11-12
 
 Documentation for TwinCat-MCP 0.2.0-beta.1.

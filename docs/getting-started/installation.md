@@ -16,8 +16,12 @@ TwinCat-MCP is installed with one MSI package that contains two features:
 
 ## Download
 
-Download `TwinCatMcp-<version>.msi` and `TwinCatMcp-<version>.msi.sha256` from
-the [TwinCat-MCP releases](https://github.com/qubernetic/TwinCat-MCP-Dist/releases).
+[Download TwinCat-MCP](https://get.twincatmcp.qubernetic.com/download/){ .md-button .md-button--primary .tcmcp-download }
+<span class="tcmcp-download-info"></span>
+
+The button always gets the latest MSI. Older versions and the
+`TwinCatMcp-<version>.msi.sha256` checksum files are on the
+[TwinCat-MCP releases](https://github.com/qubernetic/TwinCat-MCP-Dist/releases) page.
 
 !!! warning "Beta builds are not code-signed"
     The 0.2.0 beta MSI is not Authenticode-signed yet. Windows SmartScreen may

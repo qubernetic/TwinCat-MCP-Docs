@@ -28,3 +28,11 @@
 [data-md-color-scheme="slate"] .md-nav__button.md-logo img {
   content: url("../assets/logo-dark.png");
 }
+
+/* Download button info line (filled by javascripts/download.js) */
+.tcmcp-download-info {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  overflow-wrap: anywhere;
+}

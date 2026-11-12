@@ -2,7 +2,23 @@
 
 TwinCat-MCP is licensed per machine. Activating it is a two-step flow: you
 generate a **license request** on the machine that will run the Service, send it
-to Qubernetic, and install the **token** you receive back.
+to Qubernetic, and install the **token** you receive back. Everything works
+offline; the Service never contacts a license server.
+
+## Trial and full licenses
+
+Both use the same flow and the same kind of token; only the terms and the
+validity period differ.
+
+- **Trial license:** for evaluating TwinCat-MCP, not for production use. It is
+  granted under a Trial License Agreement that we sign with you, and the token
+  is valid for the agreed trial period. To start a trial, write to
+  [info@qubernetic.com](mailto:info@qubernetic.com).
+- **Full license:** granted under the
+  [Standard License Agreement](../legal/standard-license-agreement.md) for the
+  term of your order.
+
+See [Legal](../legal/index.md) for both agreements.
 
 ## 1. Generate a license request
 
@@ -12,11 +28,11 @@ The request binds your future token to this specific machine.
 
 1. Open the **Options** window from the **gear "Options"** button on the TwinCat-MCP toolbar.
 2. Select the **Licensing** page.
-3. Under **"1 · Generate a license request"**, optionally fill in **Company / Email / First name / Last name** — these are embedded into the token for display only.
+3. Under **"1 · Generate a license request"**, optionally fill in **Company / Email / First name / Last name**. They are embedded into the token for display only.
 4. Click **Generate request**. The request JSON appears in the box and is also saved to:
 
    ```
-   C:\ProgramData\TwinCat-MCP\license-request.json
+   C:\ProgramData\TwinCat-MCP\license\license-request.json
    ```
 
 5. **Send that JSON (or file) to Qubernetic** at [info@qubernetic.com](mailto:info@qubernetic.com) to receive your token.
@@ -28,7 +44,7 @@ An AI agent (or any MCP client) can do the same with the always-available
 `last`). It returns the request JSON and the saved path.
 
 !!! note
-    The request is **not** secret — it only carries your machine identifier and
+    The request is **not** secret: it only carries your machine identifier and
     the contact details you entered. You can share it freely.
 
 ## 2. Install your license token
@@ -40,8 +56,8 @@ Once you receive a token (a long string starting with `TCMCP1.`):
 1. Options → **Licensing** page → **"2 · Install a license token"**.
 2. Paste the full `TCMCP1.…` token.
 3. Click **Install license**. The result line shows either:
-    - **Installed** — the status card refreshes to **Active**.
-    - **Rejected (`<STATUS>`)** — nothing changes; see [What Licensing Gates → Troubleshooting](what-licensing-gates.md#troubleshooting).
+    - **Installed**: the status card refreshes to **Active**.
+    - **Rejected (`<STATUS>`)**: nothing changes; see [What Licensing Gates → Troubleshooting](what-licensing-gates.md#troubleshooting).
 
 ### Via the MCP tool
 
@@ -51,6 +67,17 @@ Use the always-available `install_license` tool (param: `token`). It returns
 !!! tip
     Your token is validated for this machine **before** anything is replaced, so
     a rejected token never overwrites a working license.
+
+## Where the license files live
+
+The Service keeps the request and the installed license in
+`%ProgramData%\TwinCat-MCP\license`. Only SYSTEM and administrators can change
+this folder; users can read it. Install and replace tokens with the Licensing
+page or `install_license` rather than by copying files.
+
+Uninstalling keeps this folder, so a reinstall on the same machine is licensed
+right away. An uninstall with `PURGEDATA=1` removes it together with the rest
+of `%ProgramData%\TwinCat-MCP` (see [Installation](../getting-started/installation.md#uninstall)).
 
 ## Next
 

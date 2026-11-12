@@ -66,3 +66,18 @@ Closes the current solution.
 | Parameter | Description |
 |-----------|-------------|
 | `save` | Save before closing (default `true`). |
+
+## Service
+
+### service_memory
+
+Shows how much memory the TwinCat-MCP Service uses, its memory limits, and the
+estimated peak for the current `browse_symbols` limit. With `release: true` it frees
+memory the Service no longer needs and reports before/after.
+
+| Parameter | Description |
+|-----------|-------------|
+| `release` | Free unused memory now (default `false`: report only). |
+
+You rarely need it: the Service releases memory by itself. See
+[Service memory](../guides/troubleshooting.md#service-memory).

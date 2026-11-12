@@ -66,6 +66,9 @@ nav:
       - System & Runtime: tools/system-runtime.md
       - ADS (live variables): tools/ads.md
       - Licensing: tools/licensing.md
+  - Legal:
+      - Overview: legal/index.md
+      - Standard License Agreement: legal/standard-license-agreement.md
   - Changelog: changelog.md
 
 plugins:

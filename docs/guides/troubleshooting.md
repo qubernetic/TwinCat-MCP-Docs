@@ -13,6 +13,21 @@
 | A confirmation dialog pops up on activation | The operation would go to a real target | For UMR work enable `PreferUmr` (see [Safety](safety.md)). |
 | The agent edits `.TcPOU` / `.tsproj` files directly | Agents default to file-level work | Tell it to use the tools; add the instruction block from [Best Practices](best-practices.md). |
 
+## Service memory
+
+Large answers, mostly `browse_symbols`, leave buffers behind that the Service keeps
+for reuse. This is normal: right after many large answers the Service can use a few
+hundred MB. It gives the memory back by itself, every 60 s while it uses more than
+256 MB, so it drops back within one to two minutes.
+
+- **See it:** Options → **Memory & Limits** shows the live usage, or ask the agent to
+  call [`service_memory`](../tools/instances-and-solutions.md#service_memory).
+- **Free it now:** **Release memory now** on that page, or `service_memory` with
+  `release: true`.
+- **Memory guard:** above `MaxPrivateMemoryMB` (default 4096 MB) the Service logs a
+  critical event in the Windows Application log and restarts itself. If that happens
+  often, lower the browse limit or tell us what the agent was doing.
+
 ## Error codes
 
 When a tool fails, the agent receives a structured error with a `code`:
@@ -37,10 +52,6 @@ TwinCat-MCP 0.2.0 is a beta release. We know about the following and are working
 - **Remote Desktop.** When you are logged in to the machine over RDP,
   `launch_instance` cannot start TcXaeShell (`WTSQueryUserToken failed`). Start
   TcXaeShell manually instead — the plugin connects by itself and every other tool works.
-- **Long-running memory use.** In some situations (several TcXaeShell instances,
-  repeated plugin reconnects, a crashed UMR) the Service's memory use can grow over
-  time. If the machine slows down or `TwinCatMcp.Service` uses unusually much memory
-  in Task Manager, restart the `TwinCatMcp` service and tell us when it happened.
 - **TwinCAT trial-license dialog.** With a TwinCAT trial license, the license dialog
   shown on activation or UMR start can block the operation. Handle the dialog manually.
 - **Missing parameters.** A tool call with a missing required parameter sometimes

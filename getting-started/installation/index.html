@@ -1711,20 +1711,20 @@
   Service-only installation does not need TcXaeShell.</li>
 </ul>
 <h2 id="download">Download<a class="headerlink" href="#download" title="Permanent link">&para;</a></h2>
-<p><a class="md-button md-button--primary tcmcp-download" href="https://get.twincatmcp.qubernetic.com/download/">Download TwinCat-MCP</a>
-<span class="tcmcp-download-info"></span></p>
-<p>The button always gets the latest MSI. Older versions and the
-<code>TwinCatMcp-&lt;version&gt;.msi.sha256</code> checksum files are on the
-<a href="https://github.com/qubernetic/TwinCat-MCP-Dist/releases">TwinCat-MCP releases</a> page.</p>
+<div class="tcmcp-download">
+<p><a class="md-button md-button--primary tcmcp-download-button" href="https://get.twincatmcp.qubernetic.com/download/">Download TwinCat-MCP</a></p>
+<div class="tcmcp-download-meta">Windows installer (MSI) &middot; <a href="https://github.com/qubernetic/TwinCat-MCP-Dist/releases">All versions</a></div>
+<div class="tcmcp-download-sha"></div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Beta builds are not code-signed</p>
 <p>The 0.2.0 beta MSI is not Authenticode-signed yet. Windows SmartScreen may
 show "Windows protected your PC"; choose <strong>More info</strong>, then <strong>Run anyway</strong>.
 Before you do, check that the download is intact. In PowerShell:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">Get-FileHash</span> <span class="p">.\</span><span class="n">TwinCatMcp</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">0-beta</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">msi</span> <span class="n">-Algorithm</span> <span class="n">SHA256</span><span class="p">).</span><span class="n">Hash</span>
-<span class="nb">Get-Content</span> <span class="p">.\</span><span class="n">TwinCatMcp</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">0-beta</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">msi</span><span class="p">.</span><span class="n">sha256</span>
 </code></pre></div>
-<p>The two hashes must be the same. If they differ, do not run the file.</p>
+<p>The result must match the SHA-256 under the Download button (also in the
+<code>.msi.sha256</code> file of each release). If it differs, do not run the file.</p>
 </div>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
 <p>Run the MSI. The setup wizard shows the
@@ -1847,7 +1847,7 @@ working. With TcXaeShell open, <code>list_instances</code> shows it.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 12, 2026 10:20:44 UTC">November 12, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 12, 2026 10:28:05 UTC">November 12, 2026</span>
   </span>
 
     

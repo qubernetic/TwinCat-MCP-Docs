@@ -29,10 +29,34 @@
   content: url("../assets/logo-dark.png");
 }
 
-/* Download button info line (filled by javascripts/download.js) */
-.tcmcp-download-info {
-  display: block;
-  margin-top: 0.4rem;
+/* Download block (filled by javascripts/download.js) */
+.md-typeset .tcmcp-download {
+  margin: 1em 0 1.5em;
+}
+.md-typeset .tcmcp-download p {
+  margin: 0;
+}
+.md-typeset .tcmcp-download .md-button {
+  margin: 0 0.4rem 0.4rem 0;
+}
+.md-typeset .tcmcp-download-meta,
+.md-typeset .tcmcp-download-sha {
   font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .tcmcp-download-meta {
+  margin-top: 0.2rem;
+}
+.md-typeset .tcmcp-download-sha {
   overflow-wrap: anywhere;
+}
+.md-typeset .tcmcp-download-sha:empty {
+  display: none;
+}
+.md-typeset .tcmcp-download-sha code {
+  font-size: inherit;
+  padding: 0;
+  background: none;
+  color: inherit;
 }

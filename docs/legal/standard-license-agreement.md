@@ -6,8 +6,6 @@
     the signed copy prevails. For a printable copy, write to
     [info@qubernetic.com](mailto:info@qubernetic.com).
 
-> **DRAFT, pending legal review. Not for publication.**
-
 **End User License Agreement for the TwinCat-MCP software**
 
 © 2026 Biró Csaba Attila e.v. (Qubernetic). All rights reserved.

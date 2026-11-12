@@ -356,6 +356,26 @@
   
   
   
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../legal/" class="md-tabs__link">
+          
+  
+  
+  Legal
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
     <li class="md-tabs__item">
       <a href="../../changelog/" class="md-tabs__link">
         
@@ -918,6 +938,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#service-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#error-codes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1328,6 +1359,121 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/standard-license-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard License Agreement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../changelog/" class="md-nav__link">
         
@@ -1380,6 +1526,17 @@
     <span class="md-ellipsis">
       
         Common problems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service memory
       
     </span>
   </a>
@@ -1481,6 +1638,20 @@
 </tr>
 </tbody>
 </table>
+<h2 id="service-memory">Service memory<a class="headerlink" href="#service-memory" title="Permanent link">&para;</a></h2>
+<p>Large answers, mostly <code>browse_symbols</code>, leave buffers behind that the Service keeps
+for reuse. This is normal: right after many large answers the Service can use a few
+hundred MB. It gives the memory back by itself, every 60 s while it uses more than
+256 MB, so it drops back within one to two minutes.</p>
+<ul>
+<li><strong>See it:</strong> Options → <strong>Memory &amp; Limits</strong> shows the live usage, or ask the agent to
+  call <a href="../../tools/instances-and-solutions/#service_memory"><code>service_memory</code></a>.</li>
+<li><strong>Free it now:</strong> <strong>Release memory now</strong> on that page, or <code>service_memory</code> with
+  <code>release: true</code>.</li>
+<li><strong>Memory guard:</strong> above <code>MaxPrivateMemoryMB</code> (default 4096 MB) the Service logs a
+  critical event in the Windows Application log and restarts itself. If that happens
+  often, lower the browse limit or tell us what the agent was doing.</li>
+</ul>
 <h2 id="error-codes">Error codes<a class="headerlink" href="#error-codes" title="Permanent link">&para;</a></h2>
 <p>When a tool fails, the agent receives a structured error with a <code>code</code>:</p>
 <table>
@@ -1539,10 +1710,6 @@
 <li><strong>Remote Desktop.</strong> When you are logged in to the machine over RDP,
   <code>launch_instance</code> cannot start TcXaeShell (<code>WTSQueryUserToken failed</code>). Start
   TcXaeShell manually instead — the plugin connects by itself and every other tool works.</li>
-<li><strong>Long-running memory use.</strong> In some situations (several TcXaeShell instances,
-  repeated plugin reconnects, a crashed UMR) the Service's memory use can grow over
-  time. If the machine slows down or <code>TwinCatMcp.Service</code> uses unusually much memory
-  in Task Manager, restart the <code>TwinCatMcp</code> service and tell us when it happened.</li>
 <li><strong>TwinCAT trial-license dialog.</strong> With a TwinCAT trial license, the license dialog
   shown on activation or UMR start can block the operation. Handle the dialog manually.</li>
 <li><strong>Missing parameters.</strong> A tool call with a missing required parameter sometimes
@@ -1573,7 +1740,7 @@ time, what you asked the agent, and the error message.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 19:50:21 UTC">November 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 21:28:19 UTC">November 11, 2026</span>
   </span>
 
     

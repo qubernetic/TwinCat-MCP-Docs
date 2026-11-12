@@ -356,6 +356,26 @@
   
   
   
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../legal/" class="md-tabs__link">
+          
+  
+  
+  Legal
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
     <li class="md-tabs__item">
       <a href="../../changelog/" class="md-tabs__link">
         
@@ -625,6 +645,17 @@
     <span class="md-ellipsis">
       
         Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory &amp; Limits
       
     </span>
   </a>
@@ -1306,6 +1337,121 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/standard-license-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard License Agreement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../changelog/" class="md-nav__link">
         
@@ -1364,6 +1510,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#memory-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory &amp; Limits
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1387,8 +1544,8 @@
 <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
 <p>Shared settings live at <code>%ProgramData%\TwinCat-MCP\settings.json</code> and can be
 edited from the TwinCat-MCP toolbar <strong>Options</strong> button (gear icon) — a dockable,
-tabbed window with <strong>General</strong>, <strong>Safety &amp; Target</strong>, <strong>Connection</strong>, and
-<strong>UserMode Runtime</strong> pages (plus <strong>Licensing</strong>).</p>
+tabbed window with <strong>General</strong>, <strong>Safety &amp; Target</strong>, <strong>Connection</strong>,
+<strong>UserMode Runtime</strong> and <strong>Memory &amp; Limits</strong> pages (plus <strong>Licensing</strong>).</p>
 <h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1429,6 +1586,16 @@ tabbed window with <strong>General</strong>, <strong>Safety &amp; Target</strong
 <td><code>""</code></td>
 <td>Custom prompt text sent to AI agents on connect.</td>
 </tr>
+<tr>
+<td><code>BrowseSymbolsMaxNodes</code></td>
+<td><code>5000</code></td>
+<td>Hard limit for one <code>browse_symbols</code> answer (100–20000). See <a href="#memory-limits">Memory &amp; Limits</a>.</td>
+</tr>
+<tr>
+<td><code>MaxPrivateMemoryMB</code></td>
+<td><code>4096</code></td>
+<td>Memory guard: above this the Service restarts itself. <code>0</code> = off, otherwise at least 512.</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
@@ -1437,6 +1604,23 @@ tabbed window with <strong>General</strong>, <strong>Safety &amp; Target</strong
 endpoint URL (see <a href="../agent-connection/">Agent Connection</a>) to match the new
 port.</p>
 </div>
+<h2 id="memory-limits">Memory &amp; Limits<a class="headerlink" href="#memory-limits" title="Permanent link">&para;</a></h2>
+<p>The <strong>Memory &amp; Limits</strong> page shows the Service's memory live, like a usage meter:
+the bar is scaled to the memory guard, and a marker shows the estimated peak for your
+<code>browse_symbols</code> limit. It turns amber above the estimate and red near the guard.
+<strong>Release memory now</strong> frees unused memory immediately.</p>
+<ul>
+<li><strong>Browse limit</strong> (<code>BrowseSymbolsMaxNodes</code>): the most symbols one <code>browse_symbols</code>
+  answer may contain. Agents get 1000 unless they ask for more, and they can browse
+  deeper parts with <code>parentPath</code>. A higher limit allows larger answers but raises the
+  Service's peak memory. The page shows the estimated worst case for the value you
+  enter (about 475 MB at 5000, about 1.75 GB at 20000).</li>
+<li><strong>Memory guard</strong> (<code>MaxPrivateMemoryMB</code>): if the Service ever uses more than this, it
+  logs a critical event and restarts itself (Windows restarts it within seconds; calls
+  running at that moment fail once). This protects the workstation. The page warns
+  you if the guard is below the estimated peak.</li>
+</ul>
+<p>Both settings apply immediately, without a Service restart.</p>
 
 
 
@@ -1459,7 +1643,7 @@ port.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 25, 2026 12:39:48 UTC">June 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 21:28:19 UTC">November 11, 2026</span>
   </span>
 
     

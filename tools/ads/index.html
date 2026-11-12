@@ -356,6 +356,26 @@
   
   
   
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../legal/" class="md-tabs__link">
+          
+  
+  
+  Legal
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
     <li class="md-tabs__item">
       <a href="../../changelog/" class="md-tabs__link">
         
@@ -1339,6 +1359,121 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/standard-license-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard License Agreement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../changelog/" class="md-nav__link">
         
@@ -1472,7 +1607,8 @@ running PLC and a reachable ADS route. Common parameters:</p>
 </tbody>
 </table>
 <h3 id="browse_symbols">browse_symbols<a class="headerlink" href="#browse_symbols" title="Permanent link">&para;</a></h3>
-<p>Lists the PLC's variables.</p>
+<p>Lists the PLC's variables. The walk is always bounded, so even a large object graph
+(for example a TcOpen context) answers quickly.</p>
 <table>
 <thead>
 <tr>
@@ -1487,14 +1623,26 @@ running PLC and a reachable ADS route. Common parameters:</p>
 </tr>
 <tr>
 <td><code>maxDepth</code></td>
-<td>Max nesting depth (<code>0</code> = unlimited; <code>1</code> = top level only).</td>
+<td>Max nesting depth, default <code>2</code> (<code>1</code> = only the symbols at <code>parentPath</code>; <code>0</code> = the hard limit of 30).</td>
+</tr>
+<tr>
+<td><code>maxNodes</code></td>
+<td>Max symbols in the answer, default <code>1000</code> (<code>0</code> = the hard limit). The hard limit is the <a href="../../getting-started/configuration/#memory-limits"><code>BrowseSymbolsMaxNodes</code></a> setting, default 5000.</td>
+</tr>
+<tr>
+<td><code>followPointers</code></td>
+<td>Follow <code>POINTER TO</code> / <code>REFERENCE TO</code> symbols (default <code>false</code>).</td>
 </tr>
 <tr>
 <td><code>leafOnly</code></td>
-<td>Flat list of leaf variables only.</td>
+<td>Flat list of leaf variables only (respects <code>maxDepth</code>).</td>
 </tr>
 </tbody>
 </table>
+<p>Symbols marked <code>hasMore: true</code> have children that were not expanded. Browse them with
+<code>parentPath</code> rather than raising the limits. When a limit is reached, the answer ends
+with a <a href="../overview/#limits-are-not-errors">limit notice</a>. A value above a hard limit
+returns <code>INVALID_ARGUMENT</code> with the allowed range.</p>
 <h3 id="read_symbol">read_symbol<a class="headerlink" href="#read_symbol" title="Permanent link">&para;</a></h3>
 <p>Reads a variable's current value.</p>
 <table>
@@ -1579,7 +1727,7 @@ tests on the UserMode Runtime.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 19:50:21 UTC">November 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 21:28:19 UTC">November 11, 2026</span>
   </span>
 
     

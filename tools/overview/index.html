@@ -356,6 +356,26 @@
   
   
   
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../legal/" class="md-tabs__link">
+          
+  
+  
+  Legal
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
     <li class="md-tabs__item">
       <a href="../../changelog/" class="md-tabs__link">
         
@@ -1039,6 +1059,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#limits-are-not-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limits are not errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dry-runs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1389,6 +1420,121 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/standard-license-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard License Agreement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../changelog/" class="md-nav__link">
         
@@ -1482,6 +1628,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#limits-are-not-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limits are not errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dry-runs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1551,7 +1708,7 @@
 
 
 <h1 id="tools-overview">Tools Overview<a class="headerlink" href="#tools-overview" title="Permanent link">&para;</a></h1>
-<p>TwinCat-MCP gives your agent <strong>55 tools</strong> and <strong>3 resources</strong>. The agent picks and
+<p>TwinCat-MCP gives your agent <strong>56 tools</strong> and <strong>3 resources</strong>. The agent picks and
 parameterises the tools itself — these pages show what is possible, so you know what
 to ask for, and document the rules the tools follow.</p>
 <table>
@@ -1565,8 +1722,8 @@ to ask for, and document the rules the tools follow.</p>
 <tbody>
 <tr>
 <td><a href="../instances-and-solutions/">Instances &amp; Solutions</a></td>
-<td style="text-align: right;">7</td>
-<td>Start/quit TcXaeShell, create and close solutions and projects</td>
+<td style="text-align: right;">8</td>
+<td>Start/quit TcXaeShell, create and close solutions and projects, Service memory</td>
 </tr>
 <tr>
 <td><a href="../project-navigation/">Project Navigation</a></td>
@@ -1685,7 +1842,7 @@ projects:</p>
 </tr>
 <tr>
 <td><a href="../ads/#browse_symbols"><code>browse_symbols</code></a></td>
-<td><code>maxDepth</code>, <code>leafOnly</code></td>
+<td><code>maxDepth</code>, <code>maxNodes</code>, <code>followPointers</code>, <code>leafOnly</code></td>
 </tr>
 <tr>
 <td><a href="../build/#get_errors"><code>get_errors</code></a></td>
@@ -1701,7 +1858,15 @@ projects:</p>
 </tr>
 </tbody>
 </table>
-<p>When a result is capped, a visible truncation marker is appended.</p>
+<h3 id="limits-are-not-errors">Limits are not errors<a class="headerlink" href="#limits-are-not-errors" title="Permanent link">&para;</a></h3>
+<p>When a limit is reached, the call still succeeds and the answer ends with a notice:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"_truncated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maxNodes"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit reached, not an error: the walk stopped after 1000 symbols ..."</span><span class="p">}</span>
+</code></pre></div>
+<p><code>_limit</code> names the limit, <code>_truncated</code> is set when items were left out, and the
+message says how to get the rest (narrow the path or raise the named limit). The data
+before the notice is valid. <code>read_item_xml</code> marks a cut at the end of the text with
+<code>[limit reached, not an error: ...]</code>.</p>
 <h3 id="dry-runs">Dry runs<a class="headerlink" href="#dry-runs" title="Permanent link">&para;</a></h3>
 <p>Tools that change code or configuration —
 <a href="../pou/#write_pou"><code>write_pou</code></a>, <a href="../project-navigation/#write_item_xml"><code>write_item_xml</code></a>,
@@ -1762,7 +1927,7 @@ projects:</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 19:50:21 UTC">November 11, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 11, 2026 21:28:19 UTC">November 11, 2026</span>
   </span>
 
     

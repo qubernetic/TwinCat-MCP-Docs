@@ -2,90 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/changelog/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/getting-started/agent-connection/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/getting-started/configuration/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/getting-started/installation/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/guides/best-practices/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/guides/how-to-use/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/guides/safety/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/guides/troubleshooting/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.twincatmcp.qubernetic.com/legal/</loc>
+         <lastmod>2026-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.twincatmcp.qubernetic.com/legal/standard-license-agreement/</loc>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/licensing/requesting-and-installing/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/licensing/what-licensing-gates/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/ads/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/build/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/instances-and-solutions/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/io/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/libraries/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/licensing/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/overview/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/pou/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/project-navigation/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/system-runtime/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
     <url>
          <loc>https://docs.twincatmcp.qubernetic.com/tools/tasks/</loc>
-         <lastmod>2026-11-11</lastmod>
+         <lastmod>2026-11-12</lastmod>
     </url>
 </urlset>

@@ -16,12 +16,14 @@ TwinCat-MCP is installed with one MSI package that contains two features:
 
 ## Download
 
-[Download TwinCat-MCP](https://get.twincatmcp.qubernetic.com/download/){ .md-button .md-button--primary .tcmcp-download }
-<span class="tcmcp-download-info"></span>
+<div class="tcmcp-download" markdown>
 
-The button always gets the latest MSI. Older versions and the
-`TwinCatMcp-<version>.msi.sha256` checksum files are on the
-[TwinCat-MCP releases](https://github.com/qubernetic/TwinCat-MCP-Dist/releases) page.
+[Download TwinCat-MCP](https://get.twincatmcp.qubernetic.com/download/){ .md-button .md-button--primary .tcmcp-download-button }
+
+<div class="tcmcp-download-meta">Windows installer (MSI) &middot; <a href="https://github.com/qubernetic/TwinCat-MCP-Dist/releases">All versions</a></div>
+<div class="tcmcp-download-sha"></div>
+
+</div>
 
 !!! warning "Beta builds are not code-signed"
     The 0.2.0 beta MSI is not Authenticode-signed yet. Windows SmartScreen may
@@ -30,10 +32,10 @@ The button always gets the latest MSI. Older versions and the
 
     ```powershell
     (Get-FileHash .\TwinCatMcp-0.2.0-beta.1.msi -Algorithm SHA256).Hash
-    Get-Content .\TwinCatMcp-0.2.0-beta.1.msi.sha256
     ```
 
-    The two hashes must be the same. If they differ, do not run the file.
+    The result must match the SHA-256 under the Download button (also in the
+    `.msi.sha256` file of each release). If it differs, do not run the file.
 
 ## Install
 

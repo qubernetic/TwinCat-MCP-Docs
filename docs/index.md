@@ -2,10 +2,15 @@
 
 > **MCP server for TwinCAT 3 PLC development.** Let AI coding agents — Claude Code, GitHub Copilot CLI, Cursor — build, configure, deploy, and debug TwinCAT PLC projects through a standard tool interface.
 
-[Download TwinCat-MCP](https://get.twincatmcp.qubernetic.com/download/){ .md-button .md-button--primary .tcmcp-download }
+<div class="tcmcp-download" markdown>
+
+[Download TwinCat-MCP](https://get.twincatmcp.qubernetic.com/download/){ .md-button .md-button--primary .tcmcp-download-button }
 [Get started](getting-started/installation.md){ .md-button }
 [Connect your agent](getting-started/agent-connection.md){ .md-button }
-<span class="tcmcp-download-info"></span>
+
+<div class="tcmcp-download-meta">Windows installer (MSI) &middot; <a href="https://github.com/qubernetic/TwinCat-MCP-Dist/releases">All versions</a></div>
+
+</div>
 
 ## What it does
 

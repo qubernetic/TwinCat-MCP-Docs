@@ -8,7 +8,7 @@
 [Get started](getting-started/installation.md){ .md-button }
 [Connect your agent](getting-started/agent-connection.md){ .md-button }
 
-<div class="tcmcp-download-meta">Windows installer (MSI) &middot; <a href="https://github.com/qubernetic/TwinCat-MCP-Dist/releases">All versions</a></div>
+<div class="tcmcp-download-meta" markdown="span">Windows installer (MSI) &middot; [Release notes](changelog.md) &middot; [All versions](https://github.com/qubernetic/TwinCat-MCP-Dist/releases)</div>
 
 </div>
 

@@ -20,7 +20,7 @@ TwinCat-MCP is installed with one MSI package that contains two features:
 
 [Download TwinCat-MCP](https://get.twincatmcp.qubernetic.com/download/){ .md-button .md-button--primary .tcmcp-download-button }
 
-<div class="tcmcp-download-meta">Windows installer (MSI) &middot; <a href="https://github.com/qubernetic/TwinCat-MCP-Dist/releases">All versions</a></div>
+<div class="tcmcp-download-meta" markdown="span">Windows installer (MSI) &middot; [Release notes](../changelog.md) &middot; [All versions](https://github.com/qubernetic/TwinCat-MCP-Dist/releases)</div>
 <div class="tcmcp-download-sha"></div>
 
 </div>

@@ -5,6 +5,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/), and the site
 [Semantic Versioning](https://semver.org/) independently of the product version.
 The product's own changelog is published at [docs/changelog.md](docs/changelog.md).
 
+## [1.2.1] - 2026-11-12
+
+### Fixed
+- Download block: the version, SHA-256 and links sit on their own lines under the button instead of next to it; the redundant paragraph is gone (#18)
+
 ## [1.2.0] - 2026-11-12
 
 ### Added

@@ -5,6 +5,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/), and the site
 [Semantic Versioning](https://semver.org/) independently of the product version.
 The product's own changelog is published at [docs/changelog.md](docs/changelog.md).
 
+## [1.2.2] - 2026-11-12
+
+### Fixed
+- Release notes under the Download button opens the docs changelog instead of the GitHub release page (#23)
+
 ## [1.2.1] - 2026-11-12
 
 ### Fixed

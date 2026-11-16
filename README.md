@@ -12,34 +12,49 @@ Built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/). This
 
 ## Local development
 
-The theme, logo and fonts come from the Qubernetic brand package, a git
-submodule at `brand/`. Clone with it:
+The theme, logo and fonts come from the Qubernetic brand package, a private
+git submodule at `brand/`. Without access to it a local build of the site
+fails. You can still open a pull request with content changes: CI builds the
+site and checks it. On a pull request from a fork only the workflow rules run,
+because forks get no access to the theme, and a maintainer builds the change.
+
+The submodule is set to `update = none`, so `git clone --recurse-submodules`
+succeeds and leaves `brand/` empty. With access to the brand repository, fetch
+it explicitly:
 
 ```bash
-git clone --recurse-submodules https://github.com/qubernetic/TwinCat-MCP-Docs.git
-# in an existing clone: git submodule update --init
+git clone https://github.com/qubernetic/TwinCat-MCP-Docs.git
+cd TwinCat-MCP-Docs
+git submodule update --init --checkout brand
 ```
 
-Requires Python 3.x. Use a virtual environment to match the pinned build:
+Then serve or build the site with [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv run --with-requirements requirements.txt mkdocs serve           # live preview at http://127.0.0.1:8000
+uv run --with-requirements requirements.txt mkdocs build --strict  # the CI build; must pass
+```
+
+Or in a virtual environment:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-
-mkdocs serve                       # live preview at http://127.0.0.1:8000
-mkdocs build --strict              # production build (must pass — CI gate)
+pip install --require-hashes -r requirements.txt
+mkdocs serve
 ```
 
-> The social-card plugin needs the Cairo graphics libraries. On Debian/Ubuntu:
-> `sudo apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev`
+> The social-card plugin loads the Cairo library (`libcairo.so.2` on Linux).
+> If your system lacks it, install it, for example `sudo apt-get install libcairo2` on Debian/Ubuntu.
 
 ## Repository layout
 
 ```
 mkdocs.yml                     # site config: theme, nav, plugins
 brand/                         # git submodule: Qubernetic brand package (theme in brand/mkdocs/material)
-requirements.txt               # pinned mkdocs-material + plugins
+requirements.in                # direct dependencies: mkdocs-material at the theme's version + plugins
+requirements.txt               # compiled from requirements.in, pinned by hash
+tests/                         # rules of the deploy workflow (pytest), with their own locked requirements
 docs/
 ├── index.md                   # landing / showcase
 ├── CNAME                      # custom domain (docs.twincatmcp.qubernetic.com)
@@ -48,16 +63,34 @@ docs/
 ├── licensing/                 # user-facing licensing how-to
 ├── tools/overview.md          # tools overview
 └── changelog.md               # public changelog
-.github/workflows/deploy-docs.yml   # build + deploy to GitHub Pages
+.github/workflows/deploy-docs.yml   # rules, build and deploy to GitHub Pages
 SECURITY.md · CODE_OF_CONDUCT.md · LICENSE
 ```
 
 ## How it deploys
 
-Every push to `main` runs the [deploy workflow](.github/workflows/deploy-docs.yml):
-it builds the site with `mkdocs gh-deploy --force` (strict mode) and publishes to
-the `gh-pages` branch, which GitHub Pages serves at the custom domain. The
-`docs/CNAME` file preserves `docs.twincatmcp.qubernetic.com` across deploys.
+The [deploy workflow](.github/workflows/deploy-docs.yml) has three jobs:
+
+- `rules` checks the workflow itself with `tests/test_docs_workflow.py`.
+- `build` fetches the brand theme at the pinned commit with a read-only deploy
+  key (the repository secret `BRAND_DEPLOY_KEY`) and runs `mkdocs build --strict`.
+  On `main` it uploads the site for GitHub Pages; on pull requests and manual
+  runs from other branches it uploads it as the `docs-site` artifact, which you
+  can download and inspect.
+- `deploy` publishes the Pages artifact, from `main` only.
+
+`rules` and `build` run on every pull request and on every push to `main`; pull
+requests from forks run `rules` only. The custom domain
+`docs.twincatmcp.qubernetic.com` is set in the repository's Pages settings.
+
+After changing `requirements.in`, regenerate the lock:
+
+```bash
+uv pip compile --generate-hashes --python-version 3.12 --python-platform x86_64-unknown-linux-gnu requirements.in -o requirements.txt
+```
+
+`mkdocs-material` stays at the version the brand theme is built for; it moves
+only together with the `brand` pin.
 
 ## Contributing
 

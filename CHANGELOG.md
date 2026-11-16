@@ -5,6 +5,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/), and the site
 [Semantic Versioning](https://semver.org/) independently of the product version.
 The product's own changelog is published at [docs/changelog.md](docs/changelog.md).
 
+## [Unreleased]
+
+### Changed
+- The site uses the Qubernetic brand theme, logo and fonts (#28)
+- The site is published to GitHub Pages as a build artifact; the `gh-pages` branch is no longer updated (#28)
+
+### Added
+- Pull requests build the site and check the rules of the deploy workflow (#28)
+
 ## [1.2.2] - 2026-11-12
 
 ### Fixed

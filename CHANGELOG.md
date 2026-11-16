@@ -7,12 +7,13 @@ The product's own changelog is published at [docs/changelog.md](docs/changelog.m
 
 ## [1.3.0] - 2026-11-16
 
+### Added
+- Pull requests from this repository and manual runs build the site; every pull request checks the rules of the deploy workflow (#28)
+- Shell tabs for the multi-line commands: bash and PowerShell for connecting Claude Code, PowerShell and cmd for the unattended install (#28)
+
 ### Changed
 - The site uses the Qubernetic brand theme, logo and fonts (#28)
 - The site is published to GitHub Pages as a build artifact; the `gh-pages` branch is no longer updated (#28)
-
-### Added
-- Pull requests from this repository and manual runs build the site; every pull request checks the rules of the deploy workflow (#28)
 
 ## [1.2.2] - 2026-11-12
 

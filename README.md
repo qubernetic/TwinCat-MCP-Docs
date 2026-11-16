@@ -1,10 +1,10 @@
-# TwinCat-MCP — Documentation
+# TwinCat-MCP Documentation
 
 [![Deploy docs](https://github.com/qubernetic/TwinCat-MCP-Docs/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/qubernetic/TwinCat-MCP-Docs/actions/workflows/deploy-docs.yml)
 [![Docs](https://img.shields.io/badge/docs-live-22A8E0)](https://docs.twincatmcp.qubernetic.com)
 [![License](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
 
-Source for the **public user documentation** of [TwinCat-MCP](https://docs.twincatmcp.qubernetic.com) — an MCP server for TwinCAT 3 PLC development that lets AI coding agents (Claude Code, GitHub Copilot CLI, Cursor) build, configure, deploy, and debug TwinCAT PLC projects through a standard tool interface.
+Source for the **public user documentation** of [TwinCat-MCP](https://docs.twincatmcp.qubernetic.com), an MCP server for TwinCAT 3 PLC development that lets AI coding agents (Claude Code, GitHub Copilot CLI, Cursor) build, configure, deploy, and debug TwinCAT PLC projects through a standard tool interface.
 
 > 📖 **Live site: [docs.twincatmcp.qubernetic.com](https://docs.twincatmcp.qubernetic.com)**
 
@@ -29,6 +29,16 @@ cd TwinCat-MCP-Docs
 git submodule update --init --checkout brand
 ```
 
+The submodule URL is HTTPS. If you reach GitHub over SSH only, have git rewrite
+it on the command line:
+
+```bash
+git -c url."git@github.com:".insteadOf=https://github.com/ submodule update --init --checkout brand
+```
+
+The rewrite is not saved, so give later `git submodule update --checkout brand`
+runs the same `-c` option.
+
 `update = none` applies to later updates as well. After the `brand` pin
 changes (a pull, or switching branches), run
 `git submodule update --checkout brand` again, or you keep building with the
@@ -51,8 +61,9 @@ pip install --require-hashes -r requirements.txt
 mkdocs serve
 ```
 
-> The social-card plugin loads the Cairo library (`libcairo.so.2` on Linux).
-> If your system lacks it, install it, for example `sudo apt-get install libcairo2` on Debian/Ubuntu.
+> The build draws the social cards with the Cairo graphics library
+> (`libcairo.so.2` on Linux), which pip and uv do not install. On Debian or
+> Ubuntu, install it with `sudo apt-get install libcairo2`.
 
 ## Repository layout
 
@@ -66,9 +77,12 @@ docs/
 ├── index.md                   # landing / showcase
 ├── CNAME                      # the custom domain for reference; the Pages settings hold the live value
 ├── stylesheets/extra.css      # the download block's own styles
+├── javascripts/download.js    # fills the download block from the update feed
 ├── getting-started/           # installation, agent connection, configuration
+├── guides/                    # how to use it, best practices, safety, troubleshooting
+├── tools/                     # tools overview and one page per tool group
 ├── licensing/                 # user-facing licensing how-to
-├── tools/overview.md          # tools overview
+├── legal/                     # legal overview and the Standard License Agreement
 └── changelog.md               # public changelog
 .github/workflows/deploy-docs.yml   # rules, build and deploy to GitHub Pages
 SECURITY.md · CODE_OF_CONDUCT.md · LICENSE
@@ -101,7 +115,7 @@ only together with the `brand` pin.
 
 ## Contributing
 
-- **Branching:** Gitflow — work on `feature/*`, PR into `develop`; `main` is the published site.
+- **Branching:** Gitflow. Work on `feature/*` and open a PR into `develop`; `main` is the published site.
 - **Commits:** [Conventional Commits](https://www.conventionalcommits.org/) (`docs:`, `feat:`, `fix:`, `chore:`, …).
 - CI runs `mkdocs build --strict`. A broken link or nav entry fails the build, and on `main` a failed build stops the deploy. Without access to the theme you can still run the workflow rules: `uv run --with-requirements tests/requirements.txt pytest -q tests`.
 
@@ -114,7 +128,7 @@ Only **curated, user-facing** content belongs here. Never add:
 - internal source, samples, or planning documents;
 - the name of any prior employer or third party.
 
-When in doubt, leave it out — this content is world-readable.
+When in doubt, leave it out: this content is world-readable.
 
 ## License
 
@@ -124,4 +138,4 @@ or derivative works require permission.
 
 ---
 
-<sub>A <a href="https://qubernetic.com">Qubernetic</a> product — *we build the future*.</sub>
+<sub>A <a href="https://qubernetic.com">Qubernetic</a> product · *we build the future*</sub>

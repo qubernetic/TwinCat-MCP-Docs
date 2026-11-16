@@ -12,6 +12,14 @@ Built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/). This
 
 ## Local development
 
+The theme, logo and fonts come from the Qubernetic brand package, a git
+submodule at `brand/`. Clone with it:
+
+```bash
+git clone --recurse-submodules https://github.com/qubernetic/TwinCat-MCP-Docs.git
+# in an existing clone: git submodule update --init
+```
+
 Requires Python 3.x. Use a virtual environment to match the pinned build:
 
 ```bash
@@ -29,13 +37,13 @@ mkdocs build --strict              # production build (must pass — CI gate)
 ## Repository layout
 
 ```
-mkdocs.yml                     # site config: theme, nav, plugins, brand
+mkdocs.yml                     # site config: theme, nav, plugins
+brand/                         # git submodule: Qubernetic brand package (theme in brand/mkdocs/material)
 requirements.txt               # pinned mkdocs-material + plugins
 docs/
 ├── index.md                   # landing / showcase
 ├── CNAME                      # custom domain (docs.twincatmcp.qubernetic.com)
-├── assets/                    # logo (light/dark), favicon
-├── stylesheets/extra.css      # brand accent + dark-mode logo swap
+├── stylesheets/extra.css      # the download block's own styles
 ├── getting-started/           # installation, agent connection, configuration
 ├── licensing/                 # user-facing licensing how-to
 ├── tools/overview.md          # tools overview

@@ -66,9 +66,12 @@ docs/
 ├── index.md                   # landing / showcase
 ├── CNAME                      # the custom domain for reference; the Pages settings hold the live value
 ├── stylesheets/extra.css      # the download block's own styles
+├── javascripts/download.js    # fills the download block from the update feed
 ├── getting-started/           # installation, agent connection, configuration
+├── guides/                    # how to use it, best practices, safety, troubleshooting
+├── tools/                     # tools overview and one page per tool group
 ├── licensing/                 # user-facing licensing how-to
-├── tools/overview.md          # tools overview
+├── legal/                     # legal overview and the Standard License Agreement
 └── changelog.md               # public changelog
 .github/workflows/deploy-docs.yml   # rules, build and deploy to GitHub Pages
 SECURITY.md · CODE_OF_CONDUCT.md · LICENSE

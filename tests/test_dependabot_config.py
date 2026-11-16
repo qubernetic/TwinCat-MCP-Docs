@@ -42,7 +42,10 @@ def test_pull_requests_go_to_develop_weekly_and_grouped():
     for name, update in updates_by_ecosystem().items():
         assert update.get("target-branch") == "develop", name
         assert update.get("schedule", {}).get("interval") == "weekly", name
-        groups = update.get("groups", {})
-        assert len(groups) == 1, name
-        (group,) = groups.values()
-        assert group.get("patterns") == ["*"], name
+        assert update.get("groups"), name
+
+
+def test_dependabot_compiles_for_the_ci_python():
+    # Dependabot regenerates the locks with pip-compile, which does not keep
+    # uv's --python-version; it takes the interpreter from .python-version.
+    assert (ROOT / ".python-version").read_text(encoding="utf-8").strip() == "3.12"

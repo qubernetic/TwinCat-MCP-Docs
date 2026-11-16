@@ -1,10 +1,10 @@
-# TwinCat-MCP — Documentation
+# TwinCat-MCP Documentation
 
 [![Deploy docs](https://github.com/qubernetic/TwinCat-MCP-Docs/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/qubernetic/TwinCat-MCP-Docs/actions/workflows/deploy-docs.yml)
 [![Docs](https://img.shields.io/badge/docs-live-22A8E0)](https://docs.twincatmcp.qubernetic.com)
 [![License](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
 
-Source for the **public user documentation** of [TwinCat-MCP](https://docs.twincatmcp.qubernetic.com) — an MCP server for TwinCAT 3 PLC development that lets AI coding agents (Claude Code, GitHub Copilot CLI, Cursor) build, configure, deploy, and debug TwinCAT PLC projects through a standard tool interface.
+Source for the **public user documentation** of [TwinCat-MCP](https://docs.twincatmcp.qubernetic.com), an MCP server for TwinCAT 3 PLC development that lets AI coding agents (Claude Code, GitHub Copilot CLI, Cursor) build, configure, deploy, and debug TwinCAT PLC projects through a standard tool interface.
 
 > 📖 **Live site: [docs.twincatmcp.qubernetic.com](https://docs.twincatmcp.qubernetic.com)**
 
@@ -112,7 +112,7 @@ only together with the `brand` pin.
 
 ## Contributing
 
-- **Branching:** Gitflow — work on `feature/*`, PR into `develop`; `main` is the published site.
+- **Branching:** Gitflow. Work on `feature/*` and open a PR into `develop`; `main` is the published site.
 - **Commits:** [Conventional Commits](https://www.conventionalcommits.org/) (`docs:`, `feat:`, `fix:`, `chore:`, …).
 - CI runs `mkdocs build --strict`. A broken link or nav entry fails the build, and on `main` a failed build stops the deploy. Without access to the theme you can still run the workflow rules: `uv run --with-requirements tests/requirements.txt pytest -q tests`.
 
@@ -125,7 +125,7 @@ Only **curated, user-facing** content belongs here. Never add:
 - internal source, samples, or planning documents;
 - the name of any prior employer or third party.
 
-When in doubt, leave it out — this content is world-readable.
+When in doubt, leave it out: this content is world-readable.
 
 ## License
 
@@ -135,4 +135,4 @@ or derivative works require permission.
 
 ---
 
-<sub>A <a href="https://qubernetic.com">Qubernetic</a> product — *we build the future*.</sub>
+<sub>A <a href="https://qubernetic.com">Qubernetic</a> product · *we build the future*</sub>

@@ -9,8 +9,10 @@ strict: true
 
 theme:
   name: material
-  logo: assets/logo.png
-  favicon: assets/favicon.png
+  custom_dir: brand/mkdocs/material
+  font: false
+  logo: assets/qubernetic/lockup-light.svg
+  favicon: assets/qubernetic/favicon.svg
   icon:
     repo: fontawesome/brands/github
   palette:
@@ -18,16 +20,15 @@ theme:
       toggle: { icon: material/brightness-auto, name: Switch to light mode }
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: white
+      primary: custom
       accent: custom
       toggle: { icon: material/brightness-7, name: Switch to dark mode }
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
+      primary: custom
       accent: custom
       toggle: { icon: material/brightness-4, name: Switch to system preference }
   features:
-    - navigation.tabs
     - navigation.sections
     - navigation.top
     - navigation.tracking
@@ -73,7 +74,9 @@ nav:
 
 plugins:
   - search
-  - social
+  - social:
+      cards_layout_options:
+        logo: brand/mkdocs/material/assets/qubernetic/lockup-light.svg
   - git-revision-date-localized:
       enable_creation_date: true
       type: date
@@ -99,6 +102,11 @@ extra_javascript:
   - javascripts/download.js
 
 extra:
+  qubernetic:
+    product: TwinCat-MCP
+    cta:
+      label: Download
+      url: https://get.twincatmcp.qubernetic.com/download/
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/qubernetic

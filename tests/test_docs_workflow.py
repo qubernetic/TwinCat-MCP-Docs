@@ -196,9 +196,14 @@ def test_brand_key_stays_in_one_step():
         assert text(brand.get("with", {}).get(key)) == value, key
     pins = [i for i, s in enumerate(steps) if s.get("id") == "brand"]
     assert pins and pins[0] < keyed[0], "no step with id brand before the brand checkout"
-    pin_run = text(steps[pins[0]].get("run"))
-    assert "git rev-parse HEAD:brand" in pin_run
-    assert '>> "$GITHUB_OUTPUT"' in pin_run
+    # The pin is read in an assignment of its own, so a failed git rev-parse
+    # fails the step under bash -e instead of passing an empty ref, which
+    # would check out the brand's default branch.
+    pin_lines = text(steps[pins[0]].get("run")).strip().split("\n")
+    assert [l.strip() for l in pin_lines] == [
+        "sha=$(git rev-parse HEAD:brand)",
+        'echo "sha=$sha" >> "$GITHUB_OUTPUT"',
+    ]
     checkouts = [i for i, s in enumerate(steps) if uses_action(s, "actions/checkout")]
     assert len(checkouts) == 2
     assert checkouts[0] != keyed[0], "build has no checkout of its own before the brand"
@@ -235,6 +240,9 @@ def test_rehearsal_cannot_cancel_a_deploy():
     concurrency = wf.get("concurrency")
     group = concurrency.get("group") if isinstance(concurrency, dict) else concurrency
     assert group == "pages-${{ github.ref }}"
+    # A second run on main (a dispatch or a push) must not cancel a deploy
+    # that is publishing the live site; other refs may cancel their own runs.
+    assert concurrency.get("cancel-in-progress") == "${{ github.ref != 'refs/heads/main' }}"
 
 
 def test_permissions_are_least():
@@ -269,7 +277,11 @@ def test_scripts_have_no_expressions():
 
 def test_installs_are_hashed():
     lines = pip_installs(raw_workflow())
-    assert lines
+    # rules installs the test tools, build the site's lock; nothing else.
+    assert [requirements_file(l)[0] for l in lines] == [
+        "tests/requirements.txt",
+        "requirements.txt",
+    ]
     for line in lines:
         assert re.fullmatch(r"(-\s*)?(run:\s*)?pip3 install --require-hashes -r \S+", line), line
         file, problem = requirements_file(line)

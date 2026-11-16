@@ -11,7 +11,8 @@ permissions:
 
 concurrency:
   group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  # A second run on main waits instead of cancelling a deploy in progress.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   rules:
@@ -42,7 +43,11 @@ jobs:
 
       - name: Read the brand pin
         id: brand
-        run: echo "sha=$(git rev-parse HEAD:brand)" >> "$GITHUB_OUTPUT"
+        # The assignment fails the step if the pin cannot be read; an empty
+        # ref would check out the brand's default branch instead.
+        run: |
+          sha=$(git rev-parse HEAD:brand)
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
 
       - name: Fetch the brand theme
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

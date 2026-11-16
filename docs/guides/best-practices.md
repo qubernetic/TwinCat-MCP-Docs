@@ -35,19 +35,24 @@ A copy-paste instruction block (extend it with your own rules):
 ```markdown
 ## TwinCAT working rules
 
-- Work on the TwinCAT project ONLY through the twincat-mcp-service MCP tools.
-  Do not read, search or edit .TcPOU, .TcDUT, .TcGVL, .TcTTO, .tsproj,
-  .plcproj or .xti files directly.
-- Start: launch_instance with the solution path, then project_digest or
-  scan_plc_project. Use the search tool to find things, not the file system.
-- Reading code: read_pou (fields=declaration or structure when you don't
-  need the full code). Writing: write_pou, with dryRun=true first.
+- Work on the TwinCAT project ONLY through the
+  twincat-mcp-service MCP tools. Do not read, search or edit
+  .TcPOU, .TcDUT, .TcGVL, .TcTTO, .tsproj, .plcproj or .xti
+  files directly.
+- Start: launch_instance with the solution path, then
+  project_digest or scan_plc_project. Use the search tool to
+  find things, not the file system.
+- Reading code: read_pou (fields=declaration or structure
+  when you don't need the full code). Writing: write_pou,
+  with dryRun=true first.
 - Checking: check_objects, then build and get_errors.
-- Activation, runtime and PLC operations ONLY with useUmr=true.
-  Never activate or start/stop a PLC on a real target.
-- Before a larger change, describe the plan and wait for approval.
-- If a tool returns an error, fix it based on the error code; do not fall
-  back to editing files.
+- Activation, runtime and PLC operations ONLY with
+  useUmr=true. Never activate or start/stop a PLC on a real
+  target.
+- Before a larger change, describe the plan and wait for
+  approval.
+- If a tool returns an error, fix it based on the error code;
+  do not fall back to editing files.
 ```
 
 ## More tips

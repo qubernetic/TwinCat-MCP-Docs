@@ -99,7 +99,11 @@ While the PLC is logged in, changes to code and the project tree are blocked wit
 A failed call returns a structured error the agent can branch on:
 
 ```json
-{ "error": { "code": "NOT_FOUND", "message": "...", "context": { ... } } }
+{ "error": {
+    "code": "NOT_FOUND",
+    "message": "...",
+    "context": { ... }
+} }
 ```
 
 See [Troubleshooting → Error codes](../guides/troubleshooting.md#error-codes).

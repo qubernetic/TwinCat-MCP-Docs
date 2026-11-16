@@ -95,15 +95,24 @@ Rules worth knowing:
 A complete interface + implementation, as the agent would do it:
 
 ```text
-create_pou  parentPath=…^POUs           name=I_Motor   subType=618
-create_pou  parentPath=…^POUs^I_Motor   name=Speed     subType=611  returnType=LREAL
-create_pou  parentPath=…^I_Motor^Speed  name=Get       subType=613
-create_pou  parentPath=…^POUs^I_Motor   name=Start     subType=609  returnType=BOOL
+create_pou  parentPath=…^POUs  name=I_Motor
+            subType=618
+create_pou  parentPath=…^POUs^I_Motor  name=Speed
+            subType=611  returnType=LREAL
+create_pou  parentPath=…^I_Motor^Speed  name=Get
+            subType=613
+create_pou  parentPath=…^POUs^I_Motor  name=Start
+            subType=609  returnType=BOOL
 
-create_pou  parentPath=…^POUs           name=FB_Motor  subType=604  implementsInterfaces=I_Motor
-create_pou  parentPath=…^POUs^FB_Motor  name=Speed     subType=611  returnType=LREAL
-create_pou  parentPath=…^FB_Motor^Speed name=Get       subType=613
-create_pou  parentPath=…^POUs^FB_Motor  name=Start     subType=609  returnType=BOOL  accessModifier=PUBLIC
+create_pou  parentPath=…^POUs  name=FB_Motor
+            subType=604  implementsInterfaces=I_Motor
+create_pou  parentPath=…^POUs^FB_Motor  name=Speed
+            subType=611  returnType=LREAL
+create_pou  parentPath=…^FB_Motor^Speed  name=Get
+            subType=613
+create_pou  parentPath=…^POUs^FB_Motor  name=Start
+            subType=609  returnType=BOOL
+            accessModifier=PUBLIC
 write_pou   …  (implementations)
 check_objects
 ```

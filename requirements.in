@@ -1,0 +1,4 @@
+mkdocs-material==9.7.6
+pillow
+cairosvg
+mkdocs-git-revision-date-localized-plugin

@@ -29,6 +29,13 @@ cd TwinCat-MCP-Docs
 git submodule update --init --checkout brand
 ```
 
+The submodule URL is HTTPS. If you reach GitHub over SSH only, rewrite it for
+that one command:
+
+```bash
+git -c url."git@github.com:".insteadOf=https://github.com/ submodule update --init --checkout brand
+```
+
 `update = none` applies to later updates as well. After the `brand` pin
 changes (a pull, or switching branches), run
 `git submodule update --checkout brand` again, or you keep building with the

@@ -70,9 +70,19 @@ msiexec /i TwinCatMcp-<version>.msi /qn
 
 For example, Service only, with a log file:
 
-```
-msiexec /i TwinCatMcp-<version>.msi /qn ADDLOCAL=ServiceFeature /l*v install.log
-```
+=== "PowerShell"
+
+    ```powershell
+    msiexec /i TwinCatMcp-<version>.msi /qn `
+      ADDLOCAL=ServiceFeature /l*v install.log
+    ```
+
+=== "cmd"
+
+    ```bat
+    msiexec /i TwinCatMcp-<version>.msi /qn ^
+      ADDLOCAL=ServiceFeature /l*v install.log
+    ```
 
 A silent install skips the license page. Installing the software still means
 that you accept the

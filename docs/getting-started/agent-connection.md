@@ -19,9 +19,19 @@ npm install -g @anthropic-ai/claude-code
 
 Add the MCP server:
 
-```bash
-claude mcp add --scope user --transport http twincat-mcp-service http://localhost:3001/mcp
-```
+=== "bash"
+
+    ```bash
+    claude mcp add --scope user --transport http \
+      twincat-mcp-service http://localhost:3001/mcp
+    ```
+
+=== "PowerShell"
+
+    ```powershell
+    claude mcp add --scope user --transport http `
+      twincat-mcp-service http://localhost:3001/mcp
+    ```
 
 !!! tip "Use `--scope user`"
     Without it, Claude Code registers the server only for the folder you ran the

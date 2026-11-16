@@ -14,9 +14,10 @@ Built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/). This
 
 The theme, logo and fonts come from the Qubernetic brand package, a private
 git submodule at `brand/`. Without access to it a local build of the site
-fails. You can still open a pull request with content changes: CI builds the
-site and checks it. On a pull request from a fork only the workflow rules run,
-because forks get no access to the theme, and a maintainer builds the change.
+fails. Content changes are still welcome as pull requests. CI builds and checks
+a pull request from a branch of this repository. A pull request from a fork
+runs only the workflow rules, because forks get no access to the theme, and a
+maintainer builds it before merging.
 
 The submodule is set to `update = none`, so `git clone --recurse-submodules`
 succeeds and leaves `brand/` empty. With access to the brand repository, fetch
@@ -28,17 +29,23 @@ cd TwinCat-MCP-Docs
 git submodule update --init --checkout brand
 ```
 
-Then serve or build the site with [uv](https://docs.astral.sh/uv/):
+`update = none` applies to later updates as well. After the `brand` pin
+changes (a pull, or switching branches), run
+`git submodule update --checkout brand` again, or you keep building with the
+old theme.
+
+The lock targets Python 3.12. Serve or build the site with
+[uv](https://docs.astral.sh/uv/):
 
 ```bash
-uv run --with-requirements requirements.txt mkdocs serve           # live preview at http://127.0.0.1:8000
-uv run --with-requirements requirements.txt mkdocs build --strict  # the CI build; must pass
+uv run --python 3.12 --with-requirements requirements.txt mkdocs serve           # live preview at http://127.0.0.1:8000
+uv run --python 3.12 --with-requirements requirements.txt mkdocs build --strict  # the CI build; must pass
 ```
 
-Or in a virtual environment:
+Or in a virtual environment with Python 3.12:
 
 ```bash
-python -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install --require-hashes -r requirements.txt
 mkdocs serve
@@ -57,7 +64,7 @@ requirements.txt               # compiled from requirements.in, pinned by hash
 tests/                         # rules of the deploy workflow (pytest), with their own locked requirements
 docs/
 ├── index.md                   # landing / showcase
-├── CNAME                      # custom domain (docs.twincatmcp.qubernetic.com)
+├── CNAME                      # the custom domain for reference; the Pages settings hold the live value
 ├── stylesheets/extra.css      # the download block's own styles
 ├── getting-started/           # installation, agent connection, configuration
 ├── licensing/                 # user-facing licensing how-to
@@ -96,7 +103,7 @@ only together with the `brand` pin.
 
 - **Branching:** Gitflow — work on `feature/*`, PR into `develop`; `main` is the published site.
 - **Commits:** [Conventional Commits](https://www.conventionalcommits.org/) (`docs:`, `feat:`, `fix:`, `chore:`, …).
-- Keep `mkdocs build --strict` green — broken links and nav fail the build (and the deploy).
+- CI runs `mkdocs build --strict`. A broken link or nav entry fails the build, and on `main` a failed build stops the deploy. Without access to the theme you can still run the workflow rules: `uv run --with-requirements tests/requirements.txt pytest -q tests`.
 
 ## ⚠️ This is a public repository
 

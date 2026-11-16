@@ -92,7 +92,7 @@ SECURITY.md · CODE_OF_CONDUCT.md · LICENSE
 
 The [deploy workflow](.github/workflows/deploy-docs.yml) has three jobs:
 
-- `rules` checks the workflow itself with `tests/test_docs_workflow.py`.
+- `rules` checks the workflow and the Dependabot config with the tests in `tests/`.
 - `build` fetches the brand theme at the pinned commit with a read-only deploy
   key (the repository secret `BRAND_DEPLOY_KEY`) and runs `mkdocs build --strict`.
   On `main` it uploads the site for GitHub Pages; on pull requests and manual
@@ -112,6 +112,12 @@ uv pip compile --generate-hashes --python-version 3.12 --python-platform x86_64-
 
 `mkdocs-material` stays at the version the brand theme is built for; it moves
 only together with the `brand` pin.
+
+Dependabot opens weekly pull requests into `develop` for the pinned actions and
+for the two requirement files, leaving out `mkdocs-material` and the `brand`
+submodule. Its pull requests get no Actions secrets, so `build` fetches the theme
+with the Dependabot secret `BRAND_DEPLOY_KEY`, which holds a second read-only
+deploy key on `qubernetic/brand`.
 
 ## Contributing
 

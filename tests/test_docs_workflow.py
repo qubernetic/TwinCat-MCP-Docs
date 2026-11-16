@@ -336,7 +336,10 @@ def test_docs_requirements_pin_the_themes_material():
     names = [l.strip() for l in lines if l.strip() and not l.strip().startswith("#")]
     assert "mkdocs-material==9.7.6" in names
     for package in ("pillow", "cairosvg", "mkdocs-git-revision-date-localized-plugin"):
-        assert any(re.match(rf"{package}\b", n) for n in names), package
+        # The exact name, then extras, a version specifier, a marker or nothing:
+        # `pillow-simd` is not `pillow`.
+        exact = rf"{re.escape(package)}\s*(?:[\[<>=!~;]|$)"
+        assert any(re.match(exact, n, re.IGNORECASE) for n in names), package
     locked = (ROOT / "requirements.txt").read_text(encoding="utf-8")
     assert "mkdocs-material==9.7.6 " in locked
 

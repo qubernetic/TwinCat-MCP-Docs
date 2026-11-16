@@ -58,8 +58,9 @@ pip install --require-hashes -r requirements.txt
 mkdocs serve
 ```
 
-> The social-card plugin loads the Cairo library (`libcairo.so.2` on Linux).
-> If your system lacks it, install it, for example `sudo apt-get install libcairo2` on Debian/Ubuntu.
+> The build draws the social cards with the Cairo graphics library
+> (`libcairo.so.2` on Linux), which pip and uv do not install. On Debian or
+> Ubuntu, install it with `sudo apt-get install libcairo2`.
 
 ## Repository layout
 

@@ -5,7 +5,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/), and the site
 [Semantic Versioning](https://semver.org/) independently of the product version.
 The product's own changelog is published at [docs/changelog.md](docs/changelog.md).
 
-## [Unreleased]
+## [1.3.0] - 2026-11-16
 
 ### Changed
 - The site uses the Qubernetic brand theme, logo and fonts (#28)

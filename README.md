@@ -117,7 +117,9 @@ Dependabot opens weekly pull requests into `develop` for the pinned actions and
 for the two requirement files, leaving out `mkdocs-material` and the `brand`
 submodule. Its pull requests get no Actions secrets, so `build` fetches the theme
 with the Dependabot secret `BRAND_DEPLOY_KEY`, which holds a second read-only
-deploy key on `qubernetic/brand`.
+deploy key on `qubernetic/brand`. Dependabot reads its config from `main`, so a
+change to `.github/dependabot.yml` takes effect with the next release. It
+regenerates the locks with pip-compile for the Python in `.python-version`.
 
 ## Contributing
 

@@ -5,6 +5,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/), and the site
 [Semantic Versioning](https://semver.org/) independently of the product version.
 The product's own changelog is published at [docs/changelog.md](docs/changelog.md).
 
+## [1.3.1] - 2026-11-18
+
+### Fixed
+- The theme switch in the header keeps its layout after a click: brand theme v0.3.1 (#37)
+
 ## [1.3.0] - 2026-11-16
 
 ### Changed

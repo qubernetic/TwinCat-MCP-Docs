@@ -47,16 +47,10 @@ When a tool fails, the agent receives a structured error with a `code`:
 
 ## Known limitations
 
-TwinCat-MCP 0.2.0 is a beta release. We know about the following and are working on them:
+TwinCat-MCP 0.2.0 is a beta release. We know about the following and are working on it:
 
-- **Remote Desktop.** When you are logged in to the machine over RDP,
-  `launch_instance` cannot start TcXaeShell (`WTSQueryUserToken failed`). Start
-  TcXaeShell manually instead — the plugin connects by itself and every other tool works.
 - **TwinCAT trial-license dialog.** With a TwinCAT trial license, the license dialog
   shown on activation or UMR start can block the operation. Handle the dialog manually.
-- **Missing parameters.** A tool call with a missing required parameter sometimes
-  surfaces as a generic error instead of `INVALID_ARGUMENT`. Agents usually retry
-  correctly by themselves.
 
 Still stuck? Contact [info@qubernetic.com](mailto:info@qubernetic.com) — include the
 time, what you asked the agent, and the error message.

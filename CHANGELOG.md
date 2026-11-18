@@ -5,7 +5,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/), and the site
 [Semantic Versioning](https://semver.org/) independently of the product version.
 The product's own changelog is published at [docs/changelog.md](docs/changelog.md).
 
-## [Unreleased]
+## [1.4.0] - 2026-11-18
 
 ### Added
 - Dependabot opens weekly pull requests into `develop` for the pinned actions and the Python requirements (#35)

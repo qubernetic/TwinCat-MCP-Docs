@@ -10,6 +10,11 @@ The product's own changelog is published at [docs/changelog.md](docs/changelog.m
 ### Added
 - Dependabot opens weekly pull requests into `develop` for the pinned actions and the Python requirements (#35)
 
+## [1.3.1] - 2026-11-18
+
+### Fixed
+- The theme switch in the header keeps its layout after a click: brand theme v0.3.1 (#37)
+
 ## [1.3.0] - 2026-11-16
 
 ### Added

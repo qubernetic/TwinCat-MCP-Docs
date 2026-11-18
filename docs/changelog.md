@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0-beta.2] - 2026-11-18
+
+A bug-fix release. Install it over 0.2.0-beta.1: settings and license are kept.
+
+!!! warning "Beta"
+    The beta MSI is not code-signed yet. See
+    [Installation](getting-started/installation.md#download) for how to check
+    the download.
+
+### Fixed
+- `read_pou` failed on the Get and Set accessors of an interface property, and with `recursive=true` on the whole interface. Interfaces are now read in full, with their methods, properties and accessors.
+- A tool call without a required parameter now returns `INVALID_ARGUMENT` and names the missing parameter.
+- After a failed build was fixed, `build` and `get_errors` still reported the old platform build failure. They now show only the result of the last build. `get_errors` and `check_objects` also work before the first build after opening a solution.
+- After `quit_instance`, the next calls could fail for a short time with "Multiple TcXaeShell instances connected". The closed instance is now removed at once.
+- `project_digest` now lists the methods of an interface, not only its properties. `scan_plc_project` labels interface methods (`ItfMethod`) and property accessors (`Accessor`).
+
 ## [0.2.0-beta.1] - 2026-11-12
 
 TwinCat-MCP now runs as a **Windows Service** with a **TcXaeShell Plugin**,

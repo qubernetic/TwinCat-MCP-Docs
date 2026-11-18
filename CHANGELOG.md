@@ -9,6 +9,10 @@ The product's own changelog is published at [docs/changelog.md](docs/changelog.m
 
 ### Added
 - Dependabot opens weekly pull requests into `develop` for the pinned actions and the Python requirements (#35)
+- Release notes for TwinCat-MCP 0.2.0-beta.2 (#41)
+
+### Changed
+- Known limitations no longer list Remote Desktop (fixed in 0.2.0-beta.1) or missing parameters (fixed in 0.2.0-beta.2) (#41)
 
 ## [1.3.1] - 2026-11-18
 

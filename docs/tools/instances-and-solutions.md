@@ -20,8 +20,7 @@ Always available.
 
 !!! note
     The solution path must be visible to the TwinCat-MCP Windows service — use a
-    local path, not a drive letter mapped only in your user session. Over Remote
-    Desktop, see [Known limitations](../guides/troubleshooting.md#known-limitations).
+    local path, not a drive letter mapped only in your user session.
 
 ### quit_instance
 
